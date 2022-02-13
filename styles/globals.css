@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+body {
+  @apply dark:text-slate-50 dark:bg-slate-800 min-h-screen w-full overflow-x-hidden overflow-y-auto md:text-[18px] p-4;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  @apply text-4xl font-semibold;
+}
+
+h2 {
+  @apply text-2xl font-semibold;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h5 {
+  @apply text-lg;
+}
