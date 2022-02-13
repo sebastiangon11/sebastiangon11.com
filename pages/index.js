@@ -1,20 +1,22 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import Image from 'next/image';
 
 import { Posts } from '../components/blog/Posts';
-import Image from 'next/image';
 import { ExperienceTimeline } from '../components/bio/ExperienceTimeline';
+import { LinkedinBadge } from '../components/bio/LinkedinBadge';
+import { GithubBadge } from '../components/bio/GithubBadge';
 
 export default function Home({ posts }) {
   return (
     <section>
       <div className="container max-w-xl md:mx-auto">
         <div className="flex gap-x-4 items-center">
-          <span className="block min-w-[50px] drop-shadow-md">
+          <span className="block min-w-[50px]">
             <Image
               alt="Sebastián González"
-              src="/bio/avatar.jpeg"
+              src="/bio/avatar.gif"
               width={100}
               height={100}
               className="rounded-full"
@@ -24,15 +26,25 @@ export default function Home({ posts }) {
           <h1 className="block my-2 text-6xl">Seba González</h1>
         </div>
 
-        <h2 className="block my-4">Frontend Engineer</h2>
+        <div className="flex gap-x-2 items-center">
+          <h2 className="my-4">
+            Software Engineer. <span className="font-extralight">Frontend passionate</span>
+          </h2>
+          <LinkedinBadge />
+          <GithubBadge />
+        </div>
 
-        <p className="block my-4 font-extralight">
-          I am a <span className="font-semibold">very</span> curious person. I like to learn about the most varied
-          topics and understand how things work. <br />I love web development and I am always learning new things to
-          apply on my personal projects.
+        <p className="block my-4 font-normal">
+          🤔 I am a <span className="font-semibold">very</span> curious person.
+          <br />
+          ⚙️ I like to understand how things work.
+          <br />
+          🕸️ I love web development.
+          <br />
+          🚀 I am always learning new things to apply on my personal projects.
         </p>
 
-        <h2 className="block my-4">Experience</h2>
+        <h2 className="block my-4">Work experience</h2>
         <ExperienceTimeline />
       </div>
 

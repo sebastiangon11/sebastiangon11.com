@@ -21,5 +21,7 @@ const classNames = {
 };
 
 export const Badge = ({ children, type }) => (
-  <span className={`text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ${classNames[type]}`}>{children}</span>
+  <span className={`inline-block text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ${classNames[type]}`}>
+    {children}
+  </span>
 );

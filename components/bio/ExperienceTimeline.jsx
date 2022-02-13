@@ -13,7 +13,7 @@ export const ExperienceTimeline = () => (
           <Badge type={BADGES.YELLOW}>Javascript</Badge>
           <Badge type={BADGES.BLUE}>React</Badge>
         </div>
-        <div className="mb-4 text-base font-normal text-gray-500 dark:text-gray-300">
+        <div className="mb-4 text-gray-500 dark:text-gray-300">
           <p className="font-extralight">
             <span className="font-semibold">- Home Page</span> Involved in the new web home page which works with
             backend driven UI. I worked on building the web library which turns a JSON into the UI and the micro
@@ -27,9 +27,9 @@ export const ExperienceTimeline = () => (
           </p>
           <br />
           <p className="font-extralight">
-            <span className="font-semibold">- Web Team</span> Whenever I can, I contribute to cross web projects that
-            help improve the development experience and the quality of the product we build in line with the
-            company&apos;s OKRs and KPIs
+            <span className="font-semibold">- Web Team</span> I contribute to cross company web projects that help
+            improve the development experience and the quality of the product we build in line with the company&apos;s
+            OKRs and KPIs
           </p>
         </div>
       </Event.Body>
@@ -46,7 +46,7 @@ export const ExperienceTimeline = () => (
           <Badge type={BADGES.YELLOW}>Javascript</Badge>
           <Badge type={BADGES.INDIGO}>Web sockets</Badge>
         </div>
-        <div className="mb-4 text-base font-normal text-gray-500 dark:text-gray-300">
+        <div className="mb-4 text-gray-500 dark:text-gray-300">
           <p className="font-extralight">
             <span className="font-semibold">- Real time chat</span> End to end chat solution to communicate users and
             support agents with crm integration. I was in charge of building a solution proposal, its architecture,
@@ -78,9 +78,11 @@ export const ExperienceTimeline = () => (
           <Badge type={BADGES.INDIGO}>C#</Badge>
           <Badge type={BADGES.BLUE}>MS SQL</Badge>
         </div>
-        <div className="mb-4 text-base font-normal text-gray-500 dark:text-gray-300">
-          Development and maintenance of .NET web applications, SQL Server database administration, remote and field
-          implementation.
+        <div className="mb-4 text-gray-500 dark:text-gray-300">
+          <p className="font-extralight">
+            Development and maintenance of .NET web applications, SQL Server database administration, remote and field
+            implementation.
+          </p>
         </div>
       </Event.Body>
     </Event>
