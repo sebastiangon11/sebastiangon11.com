@@ -6,7 +6,7 @@ export const ExperienceTimeline = () => (
     <Event>
       <Event.Image src="/bio/peya.png" alt="Pedidos Ya logo" />
       <Event.Time>August 2020 - Present</Event.Time>
-      <Event.Title>Principal Frontend Eng @ Pedidos Ya</Event.Title>
+      <Event.Title>Principal Frontend Engineer @ Pedidos Ya</Event.Title>
       <Event.Body>
         <div className="my-2">
           <Badge type={BADGES.GREEN}>Node JS</Badge>
@@ -38,7 +38,7 @@ export const ExperienceTimeline = () => (
     <Event>
       <Event.Image src="/bio/meli.png" alt="Mercado Libre logo" />
       <Event.Time>March 2017 - August 2020</Event.Time>
-      <Event.Title>Senior Frontend Eng @ Mercado Libre</Event.Title>
+      <Event.Title>Senior Frontend Engineer @ Mercado Libre</Event.Title>
       <Event.Body>
         <div className="my-2">
           <Badge type={BADGES.BLUE}>React</Badge>
