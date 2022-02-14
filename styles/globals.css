@@ -14,7 +14,7 @@ body {
 }
 
 body {
-  @apply dark:text-slate-50 dark:bg-slate-800 min-h-screen w-full overflow-x-hidden overflow-y-auto md:text-[18px] p-4;
+  @apply dark:text-slate-50 dark:bg-slate-800 min-h-screen w-full overflow-x-hidden overflow-y-auto p-4;
 }
 
 button {
@@ -22,6 +22,10 @@ button {
 }
 input:focus-visible {
   outline: none;
+}
+
+img {
+  @apply rounded;
 }
 
 @layer base {
