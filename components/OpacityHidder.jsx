@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-import { Chevron } from '../icons/Chevron';
+import { Chevron } from './icons/Chevron';
 
 export const OpacityHidder = ({ children }) => {
   const [open, toggleHidden] = useReducer((prev) => !prev, false);
