@@ -1,19 +1,10 @@
 import Head from 'next/head';
-import { useEffect } from 'react';
+import { ColorThemeButton } from '../components/theming/ThemeButton';
+import { ColorThemeProvider } from '../contexts/colorTheme';
 
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    if (
-      localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
   return (
     <>
       <Head>
@@ -24,7 +15,10 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <main>
-        <Component {...pageProps} />
+        <ColorThemeProvider>
+          <ColorThemeButton />
+          <Component {...pageProps} />
+        </ColorThemeProvider>
       </main>
     </>
   );

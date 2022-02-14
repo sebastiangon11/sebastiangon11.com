@@ -4,14 +4,25 @@ import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import { nightOwl as dark, stackoverflowLight as light } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 import { Button } from '../../components/Button.jsx';
+import { useColorTheme } from '../../contexts/colorTheme.js';
 
 export default function PostPage({ frontMatter: { title }, mdxSource }) {
+  const { theme, COLOR_THEMES } = useColorTheme();
   return (
     <div>
       <h1 className="mb-4">{title}</h1>
-      <MDXRemote {...mdxSource} components={{ Button, SyntaxHighlighter }} />
+      <MDXRemote
+        {...mdxSource}
+        components={{
+          Button,
+          SyntaxHighlighter: (props) => (
+            <SyntaxHighlighter {...props} style={theme === COLOR_THEMES.DARK ? dark : light} />
+          ),
+        }}
+      />
 
       <a
         className="github-button"
