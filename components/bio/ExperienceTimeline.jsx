@@ -6,13 +6,15 @@ export const ExperienceTimeline = () => (
     <Event>
       <Event.Image src="/bio/peya.png" alt="Pedidos Ya logo" />
       <Event.Time>August 2020 - Present</Event.Time>
-      <Event.Title>Principal Frontend Engineer @ Pedidos Ya</Event.Title>
-      <Event.Body>
+      <Event.Title>
+        Principal Frontend Engineer @ Pedidos Ya
         <div className="my-2">
-          <Badge type={BADGES.GREEN}>Node JS</Badge>
-          <Badge type={BADGES.YELLOW}>Javascript</Badge>
-          <Badge type={BADGES.BLUE}>React</Badge>
+          <Badge type={BADGES.INDIGO}>Node JS</Badge>
+          <Badge type={BADGES.INDIGO}>Javascript</Badge>
+          <Badge type={BADGES.INDIGO}>React</Badge>
         </div>
+      </Event.Title>
+      <Event.Body>
         <div className="mb-4 text-gray-500 dark:text-gray-300">
           <p className="font-extralight">
             <span className="font-semibold">- Home Page</span> Involved in the new web home page which works with
@@ -38,14 +40,16 @@ export const ExperienceTimeline = () => (
     <Event>
       <Event.Image src="/bio/meli.png" alt="Mercado Libre logo" />
       <Event.Time>March 2017 - August 2020</Event.Time>
-      <Event.Title>Senior Frontend Engineer @ Mercado Libre</Event.Title>
-      <Event.Body>
+      <Event.Title>
+        Senior Frontend Engineer @ Mercado Libre
         <div className="my-2">
-          <Badge type={BADGES.BLUE}>React</Badge>
-          <Badge type={BADGES.GREEN}>Node JS</Badge>
-          <Badge type={BADGES.YELLOW}>Javascript</Badge>
+          <Badge type={BADGES.INDIGO}>React</Badge>
+          <Badge type={BADGES.INDIGO}>Node JS</Badge>
+          <Badge type={BADGES.INDIGO}>Javascript</Badge>
           <Badge type={BADGES.INDIGO}>Web sockets</Badge>
         </div>
+      </Event.Title>
+      <Event.Body>
         <div className="mb-4 text-gray-500 dark:text-gray-300">
           <p className="font-extralight">
             <span className="font-semibold">- Real time chat</span> End to end chat solution to communicate users and
@@ -72,12 +76,14 @@ export const ExperienceTimeline = () => (
     <Event>
       <Event.Image src="/bio/telectronica.jpeg" alt="Telectrónica logo" />
       <Event.Time>March 2017</Event.Time>
-      <Event.Title>.NET Developer @ Telectrónica</Event.Title>
-      <Event.Body>
+      <Event.Title>
+        .NET Developer @ Telectrónica
         <div className="my-2">
           <Badge type={BADGES.INDIGO}>C#</Badge>
-          <Badge type={BADGES.BLUE}>MS SQL</Badge>
+          <Badge type={BADGES.INDIGO}>MS SQL</Badge>
         </div>
+      </Event.Title>
+      <Event.Body>
         <div className="mb-4 text-gray-500 dark:text-gray-300">
           <p className="font-extralight">
             Development and maintenance of .NET web applications, SQL Server database administration, remote and field

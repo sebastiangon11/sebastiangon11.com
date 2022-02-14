@@ -28,20 +28,20 @@ export default function Home({ posts }) {
 
         <div className="flex gap-x-2 items-center">
           <h2 className="my-4">
-            Software Engineer. <span className="font-extralight">Frontend passionate</span>
+            Software Engineer. <span className="font-extralight">Frontend passionate.</span>
           </h2>
           <LinkedinBadge />
           <GithubBadge />
         </div>
 
         <p className="block my-4 font-normal">
-          🤔 I am a <span className="font-semibold">very</span> curious person.
+          I am a <span className="font-semibold">very</span> curious person 🧐
           <br />
-          ⚙️ I like to understand how things work.
+          who likes to understand how things work ⚙️,
           <br />
-          🕸️ I love web development.
+          loves web development 🕸️
           <br />
-          🚀 I am always learning new things to apply on my personal projects.
+          and is always learning new things to apply on personal projects 🚀
         </p>
 
         <h2 className="block my-4">Work experience</h2>
