@@ -26,15 +26,17 @@ export default function Home({ posts }) {
           <h1 className="block my-2 text-6xl">Seba González</h1>
         </div>
 
-        <div className="flex gap-x-2 items-center">
+        <div className="flex gap-x-2 items-center justify-between">
           <h2 className="my-4">
-            Software Engineer. <span className="font-extralight">Frontend passionate.</span>
+            Software Engineer. <span className="inline-block font-extralight">Frontend passionate.</span>
           </h2>
-          <LinkedinBadge />
-          <GithubBadge />
+          <div className="flex">
+            <LinkedinBadge />
+            <GithubBadge />
+          </div>
         </div>
 
-        <p className="block my-4 font-normal">
+        <p className="block mt-2 mb-6 font-normal shadow-md py-2 px-4 rounded">
           I am a <span className="font-semibold">very</span> curious person 🧐
           <br />
           who likes to understand how things work ⚙️,
