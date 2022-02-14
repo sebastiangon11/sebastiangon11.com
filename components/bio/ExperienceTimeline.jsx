@@ -17,7 +17,7 @@ export const ExperienceTimeline = () => (
       </Event.Title>
       <Event.Body>
         <OpacityHidder>
-          <div className="h-full text-gray-500 dark:text-gray-300">
+          <div className="text-gray-500 dark:text-gray-300">
             <p className="font-extralight">
               <span className="font-semibold">- Home Page</span> Involved in the new web home page which works with
               backend driven UI. I worked on building the web library which turns a JSON into the UI and the micro
@@ -54,7 +54,7 @@ export const ExperienceTimeline = () => (
       </Event.Title>
       <Event.Body>
         <OpacityHidder>
-          <div className="h-full text-gray-500 dark:text-gray-300">
+          <div className="text-gray-500 dark:text-gray-300">
             <p className="font-extralight">
               <span className="font-semibold">- Real time chat</span> End to end chat solution to communicate users and
               support agents with crm integration. I was in charge of building a solution proposal, its architecture,
@@ -90,7 +90,7 @@ export const ExperienceTimeline = () => (
       </Event.Title>
       <Event.Body>
         <OpacityHidder>
-          <div className="h-full text-gray-500 dark:text-gray-300">
+          <div className="text-gray-500 dark:text-gray-300">
             <p className="font-extralight">
               Development and maintenance of .NET web applications, SQL Server database administration, remote and field
               implementation.
