@@ -39,7 +39,7 @@ export default function Home({ posts }) {
         <ExperienceTimeline />
       </div>
 
-      <h2 className="mx-auto max-w-7xl block my-4">Posts en español</h2>
+      <h2 className="mx-auto max-w-7xl block my-4">Posts in spanish</h2>
       <Posts posts={posts.filter((p) => p.frontMatter.language === 'ES')} />
     </section>
   );
