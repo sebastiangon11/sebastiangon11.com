@@ -14,11 +14,7 @@ export const OpacityHidder = ({ children }) => {
   }
 
   return (
-    <div
-      style={open ? null : { '-webkit-text-fill-color': 'transparent' }}
-      className={className}
-      onClick={toggleHidden}
-    >
+    <div style={open ? null : { WebkitTextFillColor: 'transparent' }} className={className} onClick={toggleHidden}>
       <div style={{ maxHeight: 'inherit' }}>{children}</div>
 
       <Chevron

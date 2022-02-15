@@ -28,9 +28,9 @@ export default function Home({ posts }) {
           Software Engineer. <span className="inline-block font-extralight">Frontend passionate.</span>
         </h2>
 
-        <p className="block mt-2 mb-6 font-normal shadow-md py-2 px-4 rounded leading-9">
-          I am a <span className="font-semibold">very</span> curious person 🧐 who likes to understand how things work
-          ⚙️ loves web development 🕸️ and is always learning new things to apply on personal projects 🚀
+        <p className="block mt-2 mb-6 font-normal shadow py-2 px-4 rounded leading-9">
+          I am a <span className="font-semibold">very</span> curious person who likes to understand how things work
+          loves web development and is always learning new things to apply on personal projects 🚀
         </p>
 
         <h2 className="block my-4">Work experience</h2>

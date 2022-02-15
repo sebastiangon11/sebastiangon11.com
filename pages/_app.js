@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
         <ColorThemeProvider>
           <div className="flex flex-row justify-between">
             <ColorThemeButton />
-            <div className="flex">
+            <div className="flex gap-x-2">
               <LinkedinBadge />
               <GithubBadge />
             </div>
