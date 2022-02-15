@@ -5,8 +5,6 @@ import Image from 'next/image';
 
 import { Posts } from '../components/blog/Posts';
 import { ExperienceTimeline } from '../components/bio/ExperienceTimeline';
-import { LinkedinBadge } from '../components/bio/LinkedinBadge';
-import { GithubBadge } from '../components/bio/GithubBadge';
 
 export default function Home({ posts }) {
   return (
