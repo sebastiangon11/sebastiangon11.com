@@ -11,7 +11,7 @@ export const BADGES = {
 
 const classNames = {
   [BADGES.BLUE]: 'bg-blue-100 text-blue-800 dark:bg-blue-200 dark:text-blue-800">',
-  [BADGES.DARK]: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">',
+  [BADGES.DARK]: 'bg-gray-100 text-gray-400 dark:bg-gray-700 dark:text-gray-300">',
   [BADGES.RED]: 'bg-red-100 text-red-800 dark:bg-red-200 dark:text-red-900">',
   [BADGES.GREEN]: 'bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-900">',
   [BADGES.YELLOW]: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-200 dark:text-yellow-900">',
@@ -21,5 +21,7 @@ const classNames = {
 };
 
 export const Badge = ({ children, type }) => (
-  <span className={`text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ${classNames[type]}`}>{children}</span>
+  <span className={`inline-block text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ${classNames[type]}`}>
+    {children}
+  </span>
 );

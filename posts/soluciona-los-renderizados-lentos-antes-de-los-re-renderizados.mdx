@@ -1,0 +1,112 @@
+---
+title: Soluciona los renderizados lentos antes de los re-renderizados
+date: '9 de Septiembre de 2019'
+description: Traducción del blog de Kent C. Dodds
+thumbnailUrl: '/posts/fix-the-slow-render-before-you-fix-the-re-render.jpeg'
+tags: ['functions', 'javascript', 'react']
+language: 'ES'
+---
+
+> Esta es una traducción a español del post [fix-the-slow-render-before-you-fix-the-re-render](https://kentcdodds.com/blog/fix-the-slow-render-before-you-fix-the-re-render) de Kent C. Dodds.
+
+![alt text](/posts/fix-the-slow-render-before-you-fix-the-re-render.jpeg)
+
+La performance es un problema grave y deberíamos construir nuestras aplicaciónes lo mas rápidas posible. Cómo lo hagamos
+tendrá un gran impacto no solo en la efectividad de nuestras optimizaciones sino también en la complejidad de nuestro código
+(la velocidad con la que podemos realizar mejoras y cambios en el futuro).
+
+Cuándo hablamos de optimizaciones en React, una de las cosas que la gente mencionan mas a menudo son los "re-renderizados" (re renders). Aseguremonos de hablamos de lo mismo:
+
+<SyntaxHighlighter showLineNumbers language="javascript">
+  {`function Counter() {
+  const [count, setCount] = React.useState(0)
+  const increment = () => setCount(c => c + 1)
+  return <button onClick={increment}>{count}</button>
+}`}
+</SyntaxHighlighter>
+
+<ButtonCounter />
+
+Cada vez que clickeamos en ese botón, estamos disparando un re-renderizado. Pero, ¿Qué es un re-renderizado?
+
+## ¿Qué es un re-renderizado?
+
+Cuando react fué lanzado por primera vez, muchas gente se centró en las mejoras de performance que React traía por sobre las demás bibliotecas de UIs existentes gracias su "DOM Virtual". Las bibliotecas de UI más populares hasta ese entonces dejaban a criterio del desarrollador cuándo actualizar el DOM o lo directamente lo hacían por tí, pero lo hacían secuencialmente por cada "componente" (o directiva) que necesitaba actualizarse. Basicamente se reduce a esto:
+
+1. Dado que actualizar el DOM es lento (como cuando se llama a <code>element.appendChild(childElement)</code>)
+2. Y ese problema de performance se agrava cuantas más veces lo haces.
+3. Y se pueden evitar algunos problemas de performance haciendo todas las actualizaciones necesarias a la vez
+4. Si se agrupan todas estas actualizaciones, se pueden reducir los problemas de performance en las actualizaciones del DOM que ocurren sucesivamente en un corto período de tiempo.
+
+Así que el equipo de React decidió agrupar las actualizaciones del DOM, para que si hubiera un cambio de estado que resultara en treinta actualizaciones de DOM, todas sucedan de una sola vez, en lugar de ejecutarse una tras otra. Sin embargo, para lograr este agrupamiento (batching), tenían que hacerse cargo de las actualizaciones del DOM, por eso tenemos <code>React.createElement</code> (qué es lo que JSX hace) para describir como queremos que se vea el DOM, y cuando hay un cambio de estado React llama a nuestra función nuevamente para obtener los elementos de React (React elements) que necestiamos renderizados en el DOM. Entonces compara esos nuevos elementos con los que le dimos la última vez que renderizamos y a partir de eso puede decidir qué actualizaciones hacer y luego trasladarlas al DOM de la manera más eficaz posible. Este proceso de actualización del DOM se llama "commiting" (confirmación) porque está tomando los elementos de React que renderizamos y los "confirma" en el DOM.
+
+Esta es una distinción realmente importante y no quiero que se pase por alto (y los nombres son un poco engañosos, así que quiero dejarlo claro). Un "renderizado" (render) ocurre cuando React llama a una función para obtener elementos de React (React elements). La "Reconciliación" (Reconciliation) ocurre cuando React compara esos elementos de React con los elementos previamente renderizados. Una "confirmación" (commit) ocurre cuando React toma esas diferencias y realiza las actualizaciones en el DOM real.
+
+<SyntaxHighlighter language="javascript">
+  {`
+  renderizado (render) → reconciliación (reconciliation) → confirmación (commit)
+                     ↖                                    ↙
+                        state change (cambio de estado)
+  `}
+</SyntaxHighlighter>
+
+Para clarificar:
+
+- La fase de "render": Crea los elementos de React - React.createElement - (<a href="https://kentcdodds.com/blog/what-is-jsx" target="_blank">conocer más</a>)
+- La fase de "reconciliación": Compara los elementos previamente renderizados contra los nuevos elementos (<a href="https://es.reactjs.org/docs/reconciliation.html" target="_blank">conocer más</a>)
+- La fase de "confirmación": Actualiza el DOM (si es necesario)
+
+Tipicamente, la fase más lenta es la fase de confirmación (commit), cuando se actualiza el DOM. Pero no todas las actualizaciones son lentas. De hecho, es probablemente un poco engañoso afirmar que "el DOM es lento" porque tiene mas matices que eso. Las actualizaciones del DOM como agregar o remover manejadores de eventos (event listeners) son muy rápidas. La parte lenta del DOM es el "layout" <a href="https://www.youtube.com/watch?v=3bc71-xzoWA" target="_blank">aprende más sobre el layout</a>.
+
+Gracias al agrupamiento y al código optimizado de React, podremos evitar muchas de las desventajas de tener que preocuparnos por este problema, pero definitivamente puede afectarnos en alguna ocación.
+
+## Re-renderizados innecesarios
+
+Solo por el hecho de que un componente se re-renderice no significa que vaya a resultar en una actualización del DOM. Aquí hay un ejemplo rápido de eso:
+
+<SyntaxHighlighter showLineNumbers language="javascript">
+  {`function Foo() {
+  return <div>FOO!</div>
+}`}
+</SyntaxHighlighter>
+
+<SyntaxHighlighter showLineNumbers language="javascript">
+  {`function Counter() {
+  const [count, setCount] = React.useState(0)
+  const increment = () => setCount(c => c + 1)
+  return (
+    <>
+      <Foo />
+      <button onClick={increment}>{count}</button>
+    </>
+  )
+}`}
+</SyntaxHighlighter>
+
+Cada vez que clickeas en el botón, la función Foo se ejecuta, pero el DOM que representa no se re-renderiza. A causa de esto, no hay ninguna actualización en el DOM para este componente. Esto se conoce comunmente como "re-render innecesario".
+
+Desafortunadamente, ha habido mucha confusión en cuanto a la diferencia entre "renderizados" y "commits". Mucha gente conoce (o al menos ha oído) que "el DOM es lento", pero pocos se dan cuenta de que solo porque un componente se re-renderice, no significa que el DOM será actualizado. Dado a este desentendimiento, creen que es un cuello de botella en la performance que un componente se renderice cuando no necesita actualizar su DOM subyacente.
+
+Esto puede ser un problema en algunos casos, pero engeneral incluso en navegadores móviles y dispositivos low-end son muy rápidos para crear objetos (fase de render) y compararlos (fase de reconciliación). Entonces, cuál es el problema con los re-renderizados?
+
+## Renderizados lentos
+
+Si javasacript es tan rápido para administrar las fases de renderizado y reconciliación, entonces ¿Por qué mi aplicación se congela cuando tengo re-renderizados innecesarios? En esa situación, sugeriría que tu problema o se encuentra en los re-renderizados innecesarios, sino que más probablemente sea con un renderizado lento en general. Hay algo que tu código está haciendo durante la fase de renderizado que está haciendo las cosas lentas. Deberías diagnosticar y arreglar ese prolema primero. Una vez que hayas solucionado ese problema, entonces puedes analizar (profiler) tu aplicación nuevamente y ver sii sigues teniendo problemas con re-renderizados innecesarios.
+
+De hecho, si dejas un renderizado lento y solo reduces la cantidad de re-renderizados, terminarías en una situación peor y probablemente con código mucho mas complejo.
+
+Quizas esto me lleve a al punto. Supongamos que debes golpearte cada vez que parpadeas 😉🤛 🥴. Lo que probablemente pienses será: "Oh, debería dejar de parpadear tanto!" Sabes que diría yo? Diría que deberías dejar de golpearte en la cara cada vez que parpadeas! En lugar de reducir la frecuencia con la que suceden las cosas malas (renderizados lentos), tal vez deberíamos eliminar la situación indeseada y sentirte libre de parpadear (renderizar) tanto como tus ojos lo necesiten 😉.
+
+![Deja de golpearte](https://res.cloudinary.com/kentcdodds-com/image/upload/f_auto,q_auto,dpr_2.0/v1625032718/kentcdodds.com/content/blog/fix-the-slow-render-before-you-fix-the-re-render/stop-hitting-yourself.gif)
+
+## Como solucionar los renderizados lentos
+
+Entonces hemos concluido que primero necesitamos arreglar los renderizados lentos. Entonces podremos determinar si los re-renderizados son aún un problema. ¿Cómo solucionamos un renderizado lento?. A menudo ya conoces cuál interacción está causando una mala experiencia para el usuario. En otras cosaciones se produce cuando abres una pestaña, clickeas un botón o escribes en un campo de texto.
+
+Esto es lo que deberías hacer: Usando la herramienta de análisis (profiling) tu navegador, inicia una sesión y detén el proceso de nuevo. Por ejemplo: <a href="https://twitter.com/brian_d_vaughn/status/1171158009277403136" target="_blank">Enlace a twitter</a>
+
+Una vez que encuentras cuál es tu parte (o de tus dependencias) que está tomando más tiempo, arregla esos problemas, intenta nuevamente con el análisis y observa las mejoras (o deterioros). No olvides las herramientas de análisis de React, son realmente muy buenas! <a href="https://twitter.com/brian_d_vaughn/status/1126950967201546240" target="_blank">Enlace a twitter</a>
+
+## Conclusión
+
+No importa si el 100% de tus renderizados son necesatios, si son lentos, produciran una mala experiencia para los usuarios. Deja de golpearte la cara cada vez que parpadeas. Soluciona los renderizados lentos primero. Luego ocupate de los re-renderizados (si aún es necesario). Buena suerte!

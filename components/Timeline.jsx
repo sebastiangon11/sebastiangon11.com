@@ -17,7 +17,7 @@ const EventTitle = ({ children }) => {
 };
 
 const EventBody = ({ children }) => {
-  return <div className="mb-4 text-base font-normal text-gray-500 dark:text-gray-300">{children}</div>;
+  return <div className="text-base font-normal text-gray-500 dark:text-gray-300">{children}</div>;
 };
 
 const Event = ({ children }) => {

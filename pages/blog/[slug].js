@@ -1,27 +1,47 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import GitHubButton from 'react-github-btn';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import { nightOwl as dark, stackoverflowLight as light } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
-import { Button } from '../../components/Button.jsx';
+import { ButtonCounter } from '../../components/ButtonCounter';
+import { useColorTheme } from '../../contexts/colorTheme.js';
 
-export default function PostPage({ frontMatter: { title }, mdxSource }) {
+export default function PostPage({ frontMatter: { title, date }, mdxSource }) {
+  const { theme, COLOR_THEMES } = useColorTheme();
+
   return (
-    <div>
+    <div className="container max-w-4xl md:mx-auto text-center">
       <h1 className="mb-4">{title}</h1>
-      <MDXRemote {...mdxSource} components={{ Button, SyntaxHighlighter }} />
+      <h4>{date}</h4>
+      <div className="container mt-8 max-w-2xl md:mx-auto text-left prose dark:prose-invert">
+        <MDXRemote
+          {...mdxSource}
+          components={{
+            ButtonCounter,
+            SyntaxHighlighter: (props) => (
+              <div className="container max-w-6xl md:mx-auto">
+                <SyntaxHighlighter
+                  {...props}
+                  customStyle={{ borderRadius: 8, fontSize: '.9rem', padding: '24px 24px 24px 16px' }}
+                  style={theme === COLOR_THEMES.DARK ? dark : dark}
+                />
+              </div>
+            ),
+          }}
+        />
+      </div>
 
-      <a
-        className="github-button"
+      <GitHubButton
         href="https://github.com/sebastiangon11/sebastiangon11.com"
         data-icon="octicon-star"
-        data-size="large"
-        aria-label="Star sebastiangon11/sebastiangon11.com on GitHub"
+        aria-label="Star sebastiangon11 on GitHub"
       >
-        Star
-      </a>
+        Star on Github
+      </GitHubButton>
     </div>
   );
 }
