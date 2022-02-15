@@ -1,10 +1,8 @@
 import Head from 'next/head';
-import { ColorThemeButton } from '../components/theming/ThemeButton';
 import { ColorThemeProvider } from '../contexts/colorTheme';
-import { LinkedinBadge } from '../components/bio/LinkedinBadge';
-import { GithubBadge } from '../components/bio/GithubBadge';
 
 import '../styles/globals.css';
+import { Navbar } from '../components/Navbar';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -17,13 +15,7 @@ function MyApp({ Component, pageProps }) {
 
       <main>
         <ColorThemeProvider>
-          <div className="flex flex-row justify-between">
-            <ColorThemeButton />
-            <div className="flex gap-x-2">
-              <LinkedinBadge />
-              <GithubBadge />
-            </div>
-          </div>
+          <Navbar />
           <Component {...pageProps} />
         </ColorThemeProvider>
       </main>
