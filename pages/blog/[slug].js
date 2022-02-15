@@ -7,7 +7,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { nightOwl as dark, stackoverflowLight as light } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
-import { Button } from '../../components/Button.jsx';
+import { ButtonCounter } from '../../components/ButtonCounter';
 import { useColorTheme } from '../../contexts/colorTheme.js';
 
 export default function PostPage({ frontMatter: { title, date }, mdxSource }) {
@@ -17,11 +17,11 @@ export default function PostPage({ frontMatter: { title, date }, mdxSource }) {
     <div className="container max-w-4xl md:mx-auto text-center">
       <h1 className="mb-4">{title}</h1>
       <h4>{date}</h4>
-      <div className="container mt-8 max-w-2xl md:mx-auto text-left" key={theme}>
+      <div className="container mt-8 max-w-2xl md:mx-auto text-left prose dark:prose-invert">
         <MDXRemote
           {...mdxSource}
           components={{
-            Button,
+            ButtonCounter,
             SyntaxHighlighter: (props) => (
               <div className="container max-w-6xl md:mx-auto">
                 <SyntaxHighlighter
