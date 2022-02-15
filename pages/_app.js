@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { ColorThemeButton } from '../components/theming/ThemeButton';
 import { ColorThemeProvider } from '../contexts/colorTheme';
+import { LinkedinBadge } from '../components/bio/LinkedinBadge';
+import { GithubBadge } from '../components/bio/GithubBadge';
 
 import '../styles/globals.css';
 
@@ -15,7 +17,13 @@ function MyApp({ Component, pageProps }) {
 
       <main>
         <ColorThemeProvider>
-          <ColorThemeButton />
+          <div className="flex flex-row justify-between">
+            <ColorThemeButton />
+            <div className="flex">
+              <LinkedinBadge />
+              <GithubBadge />
+            </div>
+          </div>
           <Component {...pageProps} />
         </ColorThemeProvider>
       </main>

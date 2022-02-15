@@ -26,15 +26,9 @@ export default function Home({ posts }) {
           <h1 className="block my-2 text-6xl">Seba González</h1>
         </div>
 
-        <div className="flex gap-x-2 items-center justify-between">
-          <h2 className="my-4">
-            Software Engineer. <span className="inline-block font-extralight">Frontend passionate.</span>
-          </h2>
-          <div className="flex">
-            <LinkedinBadge />
-            <GithubBadge />
-          </div>
-        </div>
+        <h2 className="my-4">
+          Software Engineer. <span className="inline-block font-extralight">Frontend passionate.</span>
+        </h2>
 
         <p className="block mt-2 mb-6 font-normal shadow-md py-2 px-4 rounded leading-9">
           I am a <span className="font-semibold">very</span> curious person 🧐 who likes to understand how things work
@@ -45,8 +39,8 @@ export default function Home({ posts }) {
         <ExperienceTimeline />
       </div>
 
-      <h2 className="mx-auto max-w-7xl block my-4">Posts</h2>
-      <Posts posts={posts} />
+      <h2 className="mx-auto max-w-7xl block my-4">Posts en español</h2>
+      <Posts posts={posts.filter((p) => p.frontMatter.language === 'ES')} />
     </section>
   );
 }
