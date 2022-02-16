@@ -25,13 +25,13 @@ export default function Home({ posts }) {
       <Head>
         <meta property="og:title" content="Seba González" />
         <meta property="og:description" content="Software engineer. Frontend passionate" />
-        <meta property="og:image" content="https://www.sebastiangon11.com/bio/avatar.jpeg" />
+        <meta property="og:image" content="https://www.sebastiangon11.com/bio/avatar.gif" />
         <meta property="og:url" content="https://www.sebastiangon11.com" />
         <meta property="og:type" content="website" />
         <meta name="twitter:alt" content="Seba González" />
         <meta name="twitter:title" content="Seba González" />
         <meta name="twitter:description" content="Software engineer. Frontend passionate" />
-        <meta name="twitter:image" content="https://www.sebastiangon11.com/bio/me.jpeg" />
+        <meta name="twitter:image" content="https://www.sebastiangon11.com/bio/avatar.gif" />
       </Head>
       <section className="md:mt-8">
         <div className="container max-w-7xl md:mx-auto">
