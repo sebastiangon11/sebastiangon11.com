@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { ColorThemeProvider } from '../contexts/colorTheme';
 
 import '../styles/globals.css';
+import '../styles/fades.css';
 import { Navbar } from '../components/Navbar';
 
 function MyApp({ Component, pageProps }) {
