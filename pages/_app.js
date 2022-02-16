@@ -1,10 +1,8 @@
 import Head from 'next/head';
-import { ColorThemeButton } from '../components/theming/ThemeButton';
 import { ColorThemeProvider } from '../contexts/colorTheme';
-import { LinkedinBadge } from '../components/bio/LinkedinBadge';
-import { GithubBadge } from '../components/bio/GithubBadge';
 
 import '../styles/globals.css';
+import { Navbar } from '../components/Navbar';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,17 +11,14 @@ function MyApp({ Component, pageProps }) {
         <title>Sebastián González</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@sebastiangon11" />
+        <meta name="twitter:site" content="@sebastiangon11" />
       </Head>
 
       <main>
         <ColorThemeProvider>
-          <div className="flex flex-row justify-between">
-            <ColorThemeButton />
-            <div className="flex">
-              <LinkedinBadge />
-              <GithubBadge />
-            </div>
-          </div>
+          <Navbar />
           <Component {...pageProps} />
         </ColorThemeProvider>
       </main>

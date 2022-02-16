@@ -7,18 +7,18 @@ const LOCAL_STORAGE_KEY = 'color-theme';
 const ColorThemeContext = createContext(null);
 
 export const ColorThemeProvider = ({ children }) => {
-  const [theme, setThemeState] = useState(() => {
-    if (typeof window === 'undefined') return COLOR_THEMES.LIGHT;
+  const [theme, setThemeState] = useState(COLOR_THEMES.LIGHT);
 
+  useEffect(() => {
     if (
       window.localStorage.getItem(LOCAL_STORAGE_KEY) === 'dark' ||
       (!(LOCAL_STORAGE_KEY in window.localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
-      return COLOR_THEMES.DARK;
+      setTheme(COLOR_THEMES.DARK);
+    } else {
+      setTheme(COLOR_THEMES.LIGHT);
     }
-
-    return COLOR_THEMES.LIGHT;
-  });
+  }, []);
 
   useEffect(() => {
     if (theme === COLOR_THEMES.DARK) {
