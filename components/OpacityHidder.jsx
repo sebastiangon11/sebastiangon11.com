@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-import { Chevron } from './icons/Chevron';
+import ChevronIcon from '../icons/chevron.svg';
 
 export const OpacityHidder = ({ children }) => {
   const [open, toggleHidden] = useReducer((prev) => !prev, false);
@@ -17,7 +17,7 @@ export const OpacityHidder = ({ children }) => {
     <div style={open ? null : { WebkitTextFillColor: 'transparent' }} className={className} onClick={toggleHidden}>
       <div style={{ maxHeight: 'inherit' }}>{children}</div>
 
-      <Chevron
+      <ChevronIcon
         className={`box-content py-1 w-full relative -top-0.5 inline-block cursor-pointer ${
           open ? 'rotate-180' : '-mt-2'
         }`}
