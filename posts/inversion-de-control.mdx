@@ -18,36 +18,36 @@ language: 'ES'
   Mira "Implementando inversión de control” en egghead.io
 </a>
 
-Si alguna vez has escrito código que fué usado en mas de un lugar anterioremente, probanblemente estés familiarizado con la siguiente historia:
+Si alguna vez has escrito código que fué usado en mas de un lugar, probablemente estés familiarizado con la siguiente historia:
 
 1. Escribes un fragmento de código reutilizable (funciones, componentes de React, un hook, etc.) y lo compartes (a tus compañeros de trabajo o lo publicas como código abierto).
-2. Alguien te contacta por un nuevo caso de uso que el código que escribiste no soporta, pero podría con una pequeña modificación.
-3. Agregas un argumento/propiedad/opción a tu código reutilizable y asocias la lógica para que ese caso de uso pueda ser soportado.
+2. Alguien te contacta por un nuevo caso de uso que el código que escribiste no soporta, pero podría hacerlo con una pequeña modificación.
+3. Agregas un argumento/propiedad/opción a tu código reutilizable y asocias la lógica necesaria para poder soportar ese caso.
 4. Repites los pasos 2 y 3 algunas veces (o varias 😬)
 5. El código reutilizable, es ahora una pesadilla para utilizar y mantener 😭
 
-¿Qué es especificamente lo que hace que el código sea una pesadilla para usar y mantener?
+¿Qué es específicamente lo que hace que el código sea una pesadilla para usar y mantener?
 
 Puede haber algunas cosas que causen este problema:
 
-1. 😵 **Performance o tamaño del bundle:** Hay más codigo para ejecutar por los dispositivos y eso puede impactar negativamente en la performance de varias formas. A veces puede ser tan malo que la gente decida ni siquiera investigar en como usar tu codigo debido a estos problemas.
-2. 😖 **Sobrecarga de mantenimiento:** Antes, tu código reutilizable solo tenía algunas opciones y estaba enfocado en hacer una cola cosa bien, pero ahora puede hacer muchas cosas diferentes y necesita documentación para cada una. Además, tendrás un montón de gente preguntándote como usarlo para su caso de uso específico que puede encajar bien o no con los casos de uso que ya soportas. Podrías tener incluso dos funcionalidades que hagan lo mismo, pero con una pequeña diferencia asi que terminarás respondiendo preguntas sobre cuál es la mejor para cada situación.
-3. 🐛 **Complejidad en la implementación:** Nunca es “solo un **if**”. Cada ramificación de lógica en tu código se compone con las ramificaciones ya existentes. De hecho, hay situaciones donde pordías estar soportando una combinación de parámetros que nadie esté utilizando, pero debes asegurarte de que no se rompa cuando agregas nuevas funcionalidades porque nunca sabes si alguien la está usando o no.
-4. 😕 **Complejidad de la API:** Cada nuevo argumento/opción/propiedad que agregas a tu código reutilizable hace mas dificil de usar para los usuarios finales porque ahora tienes una documentación enorme que describe todas las funcionalidades disponibles y la gente tiene que aprender todas para poder usarlas de forma efectiva. Es menos agradable de usar porque a menudo la complejidad de tu API se traslada al código de la aplicación de los desarrolladores de forma que también complejiza su código.
+1. 😵 **Performance o tamaño del bundle:** Ahora hay más codigo para ejecutar por los dispositivos y eso puede impactar negativamente en la performance de varias formas. A veces puede ser tan malo que la gente decida ni siquiera investigar cómo usar tu codigo debido a estos problemas.
+2. 😖 **Sobrecarga de mantenimiento:** Antes, tu código reutilizable solo tenía algunas opciones y estaba enfocado en hacer una cosa cosa bien, pero ahora puede hacer muchas cosas diferentes y necesita documentación para cada una. Además, tendrás un montón de gente preguntándote como usarlo para su caso de uso específico que puede encajar bien o no con los casos de uso que ya soportas. Podrías tener incluso dos funcionalidades que hagan lo mismo, pero con una pequeña diferencia asi que terminarás respondiendo preguntas sobre cuál es la mejor para cada situación.
+3. 🐛 **Complejidad en la implementación:** Nunca es “solo un **if**”. Cada ramificación de lógica en tu código se compone con las ramificaciones ya existentes. De hecho, hay situaciones donde pordías estar soportando una combinación de parámetros que nadie esté utilizando, pero debes asegurarte de que no se rompa cuando agregas nuevas funcionalidades porque en realidad nunca sabes si alguien la está usando o no.
+4. 😕 **Complejidad de la API:** Cada nuevo argumento/opción/propiedad que agregas a tu código reutilizable hace mas difícil de usar para los usuarios finales porque ahora tienes una documentación enorme que describe todas las funcionalidades disponibles y la gente tiene que aprender todas para poder usarlas de forma efectiva. Es menos agradable de usar porque a menudo la complejidad de tu API se traslada al código de la aplicación de los desarrolladores de forma que también complejiza su código.
 
-Ahora todos están tristes por esto. Hay algo que decir acerca de que el despliegue es de suma importancia cuando estamos desarrollando aplicaciones. Pero creo que sería genial si pudieramos tener en cuenta nuestras abstracciones (lean <a href="https://kentcdodds.com/blog/aha-programming" target="_blank">AHA Programming</a>) y poder desplegar nuestras applicaciones. Si hubiera algo que podamos hacer para reducir los problemas con el código reutilizable sin dejar de aprovechar los beneficios de esas abstracciones.
+Ahora todos están tristes por esto. Hay que decir que el despliegue es de suma importancia cuando estamos desarrollando apps. Creo que sería genial si pudieramos generar abstracciones (lean <a href="https://kentcdodds.com/blog/aha-programming" target="_blank">AHA Programming</a>) y poder desplegar nuestras applicaciones. Si hubiera algo que podamos hacer para reducir los problemas con el código reutilizable sin dejar de aprovechar los beneficios de esas abstracciones...
 
 ## Enter: Inversión de control
 
-Uno de los principios que he aprendido y es un mecanismo realmente efectivo para lograr simplicidad en las abstracciones es la "inversión de control". Aquí está lo que wikipedia dice sobre <a href="https://en.wikipedia.org/wiki/Inversion_of_control" target="_blank">inversión de control</a>.
+Uno de los principios que he aprendido y que es un mecanismo realmente efectivo para lograr simplicidad en las abstracciones es la "inversión de control". Aquí está lo que wikipedia dice sobre <a href="https://en.wikipedia.org/wiki/Inversion_of_control" target="_blank">inversión de control</a>.
 
-> "... en la programación tradicional, el código personalizado que expresa el propósito del programa llama a bibliotecas reutilizables para que se encarguen de tareas genéricas, pero con la inversión de control, es el framework quien llama al código personalizado o especifico para una tarea.”
+> "... en la programación tradicional, el código personalizado que expresa el propósito del programa llama a bibliotecas reutilizables para que se encarguen de tareas genéricas, pero con la inversión de control, es la biblioteca quien llama al código personalizado o especifico para una tarea.”
 
 Puedes pensar en esto como: "Has que tu abstracción haga menos cosas, y has que tus usuarios lo hagan en su lugar." Esto puede parecer contra intuitivo porque parte de lo que hace a la abstracción tan genial es que puede manejar toda la complajidad y las tareas repetitivas dentro de ella para que el resto del código pueda mantenerse “simple", "ordenado" o "limpio". Pero como ya hemos experimentado, las abstraccionas tradicionales, usualmente no funcionan asi.
 
 ## ¿Qué es la inversión de control en el código?
 
-Primero, veamos un ejemplo super artificial:
+Primero, veamos un ejemplo:
 
 <SyntaxHighlighter language="javascript">
   {`
@@ -68,7 +68,7 @@ function filter(array) {
 `}
 </SyntaxHighlighter>
 
-Ahora reproduzcamos el típico “ciclo de vida de una abstracción", agreguemos algunos casos de usos nuevos relacionados a esta abstracción y "mejoremosla inconscientemente” para que soporte esos nuevos casos.
+Ahora reproduzcamos el típico “ciclo de vida de una abstracción", agreguemos algunos casos de usos nuevos relacionados a esta abstracción y "mejoremosla" para que soporte esos nuevos casos.
 
 <SyntaxHighlighter language="javascript">
   {`
@@ -110,13 +110,13 @@ filter([0, 1, undefined, 2, null, 3, 'four', ''], {filterEmptyString: true})
 `}
 </SyntaxHighlighter>
 
-De acuerdo, literalmente solo tenemos 6 casos de uso que nos importan, pero en realidad soportamos una combinación de 25 funcinalidades (si no me equivoco).
+Ok, en realidad solo hay 6 casos de uso que nos importan, pero aún asi debemos soportar una combinación de 25 combinatorias (si no me equivoco).
 
-Y esta es una abstracción relativamente simple, estoy seguro que se podría simplificar. A menudo cuando vuelves a ver una abstracción luego de un tiempo, te das cuenta de que podrías simplificarla mucho más para los casos de uso que en realidad soporta. Desafortunadamente, tan pronto como la abstracción soporta una nueva funcionalidad (como `{filterZero: true, filterUndefined: false}`), no querrás removerla por miedo a romper la aplicación de algun desarrollador que esté usando esta abtracción.
+Y esta es una abstracción relativamente simple, estoy seguro que se podría simplificar. A menudo cuando vuelves a ver una abstracción luego de un tiempo, te das cuenta de que podrías simplificarla mucho más para los casos de uso que en realidad debería soportar. Desafortunadamente, tan pronto como la abstracción soporta una nueva funcionalidad (como `{filterZero: true, filterUndefined: false}`), no querrás removerla por miedo a romper la aplicación de algun desarrollador que la esté usando.
 
-Incluso terminaremos escribiendo tests para esos casos de uso que en realidad no necesitamos, solo por el hecho de que nuestra abstracción los soporta y "podríamos” necesitarlos en el futuro. Entonces, cuando esos casos de uso no son más necesarios, los seguiremos soportando porque nos olvidaremos, pensamos que los necesitaremos en un futuro, o simplemente porque tenemos muedo de tocar ese código.
+Incluso acabaremos escribiendo tests para esos casos de uso que en realidad no necesitamos, solo por el hecho de que nuestra abstracción los soporta y "podríamos” necesitarlos en el futuro. Entonces, cuando esos casos de uso no son más necesarios, los seguiremos soportando porque nos olvidaremos, pensamos que los necesitaremos en un futuro, o simplemente porque tenemos muedo de tocar ese código.
 
-De acuerdo, ahora agreguemos algunas abstracciones conscientes en esta función y apliquemos inversión de control para soportar todos estos casos de uso:
+De acuerdo, ahora agreguemos algunas abstracciones en esta función y apliquemos inversión de control para soportar todos estos casos de uso:
 
 <SyntaxHighlighter language="javascript">
   {`
@@ -182,7 +182,7 @@ Imagina haber tenido que soportar todo esto antes de haber invertido el control.
 
 ## ¿Una API peor?
 
-Una de las quejas mas comunes que escucho de la gente acerca de las APIs de inversión de control que he construido es: "Si, ahora es mas dificil de usar que antes“. Por ejemplo:
+Una de las quejas mas comunes que escucho de la gente acerca de las APIs de inversión de control que he construido es: "Si, pero ahora es mas difícil de usar que antes“. Por ejemplo:
 
 <SyntaxHighlighter language="javascript">
   {`
@@ -251,11 +251,11 @@ filterByLegCount(
 `}
 </SyntaxHighlighter>
 
-Puedes componer estas cosas de la forma que te guste para resolver casos de uso comunes que tengas.
+Puedes componer de la forma que te guste para resolver casos de uso comunes que tengas.
 
 ## Bueno pero, ¿hablando en serio?
 
-Eso funciona para casos de uso simples, pero **¿**qué tan bueno es este concepto en el mundo real?
+Eso funciona para casos de uso simples, pero ¿qué tan bueno es este concepto en el mundo real?
 
 Bueno, lo mas probable es que hayas usado alguna API de inversión de control sin darte cuenta. Por ejemplo, la función `Array.prototype.filter` invierte el control. Como también lo hace la función `Array.prototype.map`.
 
@@ -288,9 +288,9 @@ function App() {
 `}
 </SyntaxHighlighter>
 
-Esto permite personalizar muchas cosas de los items del Menú. Pero ¿que pasa si quisieramos insertar una línea antes del botón `Delete`? ¿Deberíamos agregar una opción más a los items? Como por ejemplo: `precedeWithLine`? Hug. Tal vez tendríamos un tipo especial de item del tipo `{contents: <hr />}`. Supongo que eso funcionaría, pero entonces también deberíamos considerar el caso en el que la propiedad `onSelect` no sea provista. Y sinceramente, esta API sería rara.
+Esto permite personalizar muchas cosas de los items del Menú. Pero ¿que pasa si quisieramos insertar una línea antes del botón `Delete`? ¿Deberíamos agregar una opción más a los items? Como por ejemplo: `precedeWithLine`? Hug. Tal vez tendríamos un tipo especial de item del tipo `{contents: <hr />}`. Supongo que eso funcionaría, pero entonces también deberíamos considerar el caso en el que la propiedad `onSelect` no sea provista. Y sinceramente, esta sería una API rara.
 
-Cuando estás pensando en como crear una buena API para gente que está intentando hacer las cosas de diferente forma, en lugar de terminar en `if`s y ternarios, considera la posibilidad de invertir el control. En este caso, ¿qué pasaría si le dieramos al usuario la responsabilidad de renderizar el menú? Usemos una de las fortalezas mas gandes de la composición de React:
+Cuando estás pensando en como crear una buena API para gente que está intentando hacer las cosas de diferente formas, en lugar de terminar en `if`s y ternarios, considera la posibilidad de invertir el control. En este caso, ¿qué pasaría si le dieramos al usuario la responsabilidad de renderizar el menú? Usemos una de las fortalezas mas gandes de la composición de React:
 
 <SyntaxHighlighter language="javascript">
   {`
@@ -317,7 +317,7 @@ Puedes leer más acerca de este patrón en el <a href="https://kentcdodds.com/bl
 
 ### Reductor de estados (state reducer)
 
-Este es un patrón que creé para resolver un problema de personalización de lógica. Puedes leer más acerca de este patron en el blog de Kent <a href="https://kentcdodds.com/blog/the-state-reducer-pattern" target="_blank">"The state reducer pattern”</a> pero en esencia es que tenía una biblioteca de inputs de búsqueda / autocompletado que se llamaba `Downshift` y alguien estaba construyendo una versión de selección múltiple del componente, por lo que necesitaban que el menú se mantenga abierto incluso luego de haber selecionado un elemento.
+Este es un patrón que creé Kent para resolver un problema de personalización de lógica. Puedes leer más acerca de este patron en mi blog <a href="https://kentcdodds.com/blog/the-state-reducer-pattern" target="_blank">"The state reducer pattern”</a> pero en esencia es que tenía una biblioteca de inputs de búsqueda / autocompletado que se llamaba `Downshift` y alguien estaba construyendo una versión de selección múltiple del componente, por lo que necesitaban que el menú se mantenga abierto incluso luego de haber selecionado un elemento.
 
 En `Downshift` teníamos lógica que indicaba que el menú debía cerrarse cuando una se realizaba una selección. La persona que necesitaba esta funcionalidad sugirió una prop `closeOnSelection`. Yo no estaba a favor de eso porque ya había estado en ese camino apocaliptico y quería evitarlo.
 
@@ -351,7 +351,7 @@ Una vez que agregamos esta propiedad, obtuvimos muchisimos menos pedidos de pers
 
 ### Render props
 
-Solo hacer una rápida mención al patrón <a href="https://reactjs.org/docs/render-props.html" target="_blank">render props</a> que es un ejemplo perfecto de inversión de control, pero no lo necesitamos tan seguido como antes, asi que no voy a hablar de él.
+Solo quería hacer una rápida mención al patrón <a href="https://reactjs.org/docs/render-props.html" target="_blank">render props</a> que es un ejemplo perfecto de inversión de control, pero no lo necesitamos tan seguido como antes, asi que no voy a hablar de él.
 
 <a href="https://kentcdodds.com/blog/react-hooks-whats-going-to-happen-to-render-props" target="_blank">
   Lee el articlo de por qué no necesitamos más render props
@@ -359,7 +359,7 @@ Solo hacer una rápida mención al patrón <a href="https://reactjs.org/docs/ren
 
 ## Un mensaje de precaución
 
-La inversión de control es una manera fantástica de hacer asunciones incorrectas acerca de casos de uso futuros en nuestro código reutilizable. Pero antes de que lo hagas, quisiera darte un consejo. Volvamos rápidamente a nuestro ejemplo:
+La inversión de control es una manera fantástica de evitar hacer asunciones incorrectas acerca de casos de uso futuros en nuestro código reutilizable. Pero antes de que lo hagas, quisiera darte un consejo. Volvamos rápidamente a nuestro ejemplo:
 
 <SyntaxHighlighter language="javascript">
   {`
@@ -380,7 +380,7 @@ filter([0, 1, undefined, 2, null, 3, 'four', ''])
 `}
 </SyntaxHighlighter>
 
-¿Qué tal si eso es todo lo que necesitaramos que `filter` hiciera y nos encontramos con una siituación en la que necesitamos filtrar todo excepto los valores `null` y `undefined`? En este caso agregar inversión de control para un solo caso de uso solo haría nuestro código mas complejo y no agregaría mucho valor.
+¿Qué tal si eso es todo lo que necesitaramos que `filter` hiciera y nos encontramos con una situación en la que necesitamos filtrar todo excepto los valores `null` y `undefined`? En este caso agregar inversión de control para un solo caso de uso solo haría nuestro código mas complejo y no agregaría mucho valor.
 
 Tal y como con las abstracciones, por favor seamos conscientes y apliquemos el principio de <a href="https://kentcdodds.com/blog/aha-programming" target="_blank">Programación AHA</a> para evitar abstracciones prematuras.
 
