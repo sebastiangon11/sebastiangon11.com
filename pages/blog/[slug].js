@@ -50,13 +50,15 @@ export default function PostPage({ frontMatter: { title, date, thumbnailUrl, des
           />
         </div>
 
-        <GitHubButton
-          href="https://github.com/sebastiangon11/sebastiangon11.com"
-          data-icon="octicon-star"
-          aria-label="Star sebastiangon11 on GitHub"
-        >
-          Star on Github
-        </GitHubButton>
+        <span className="block mt-6">
+          <GitHubButton
+            href="https://github.com/sebastiangon11/sebastiangon11.com"
+            data-icon="octicon-star"
+            aria-label="Star sebastiangon11 on GitHub"
+          >
+            Star on Github
+          </GitHubButton>
+        </span>
       </div>
     </>
   );
