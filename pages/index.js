@@ -8,6 +8,7 @@ import { ExperienceTimeline } from '../components/bio/ExperienceTimeline';
 import { StudiesTimeline } from '../components/bio/StudiesTimeline';
 import { CoursesTimeline } from '../components/bio/CoursesTimeline';
 import Head from 'next/head';
+import { RandomPath } from '../components/bio/RandomPath';
 
 const DURATION = 300;
 const DELAY = 50;
@@ -34,6 +35,15 @@ export default function Home({ posts }) {
         <meta name="twitter:image" content="https://www.sebastiangon11.com/bio/avatar.gif" />
       </Head>
       <section className="md:mt-8">
+        <RandomPath src="https://cdn4.iconfinder.com/data/icons/redis-2/1451/Untitled-2-512.png" />
+        <RandomPath src="https://icon-library.com/images/javascript-icon-png/javascript-icon-png-23.jpg" />
+        <RandomPath src="https://cdn.iconscout.com/icon/free/png-256/react-1-282599.png" />
+        <RandomPath src="https://icon-library.com/images/nodejs-icon/nodejs-icon-3.jpg" />
+        <RandomPath src="https://cdn.icon-icons.com/icons2/2108/PNG/512/sass_icon_130835.png" />
+        <RandomPath src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_cypress_icon_130654.png" />
+        <RandomPath src="https://jestjs.io/img/jest.png" />
+        <RandomPath src="https://progsoft.net/images/tailwind-css-icon-70187f0341bd945dc65ad050a9a1b8f4fd79b1cf.png" />
+
         <div className="container max-w-7xl md:mx-auto">
           <div className="flex gap-x-4 items-center opacity-0 fadeInUp" style={getAnimationStyles(DURATION, 0)}>
             <span className="block min-w-[50px]">

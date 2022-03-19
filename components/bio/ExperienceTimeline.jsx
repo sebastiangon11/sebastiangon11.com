@@ -13,6 +13,8 @@ export const ExperienceTimeline = () => (
           <Badge type={BADGES.INDIGO}>Node JS</Badge>
           <Badge type={BADGES.INDIGO}>Javascript</Badge>
           <Badge type={BADGES.INDIGO}>React</Badge>
+          <Badge type={BADGES.PINK}>Cypress</Badge>
+          <Badge type={BADGES.PINK}>Jest</Badge>
         </div>
       </Event.Title>
       <Event.Body>
@@ -50,6 +52,7 @@ export const ExperienceTimeline = () => (
           <Badge type={BADGES.INDIGO}>Node JS</Badge>
           <Badge type={BADGES.INDIGO}>Javascript</Badge>
           <Badge type={BADGES.INDIGO}>Web sockets</Badge>
+          <Badge type={BADGES.PINK}>Jest</Badge>
         </div>
       </Event.Title>
       <Event.Body>
