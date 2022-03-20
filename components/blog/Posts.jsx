@@ -9,7 +9,7 @@ export const Posts = ({ posts }) => {
         return (
           <div key={post.slug} className="col-span-4">
             <Link href={`/blog/${post.slug}`} passHref>
-              <a className="inline-block cursor-pointer">
+              <a className="inline-block cursor-pointer max-w-sm">
                 <MediaCard
                   imgSrc={thumbnailUrl}
                   imgAlt={title}

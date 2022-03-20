@@ -17,10 +17,10 @@ export const Navbar = ({ showSearchbar = false }) => {
   const router = useRouter();
   const [showMenu, toggleMenu] = useReducer((show) => !show, false);
   return (
-    <nav className="bg-white dark:bg-gray-800 border-gray-200 py-2.5 rounded ">
+    <nav className="bg-transparent border-gray-200 py-2.5 rounded ">
       <div className="flex flex-wrap justify-between items-center">
         <ColorThemeButton />
-        <div className="justify-between items-center w-auto md:flex md:order-2">
+        <div className="justify-between items-center w-auto md:flex md:order-2 mx-2.5">
           <ul className="flex gap-x-4">
             <li>
               <LinkedinBadge />

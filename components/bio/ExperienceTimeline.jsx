@@ -99,5 +99,14 @@ export const ExperienceTimeline = () => (
         </OpacityHidder>
       </Event.Body>
     </Event>
+
+    <Event>
+      <Event.Image src="/bio/um.jpeg" alt="Universidad de Morón Ya logo" />
+      <Event.Time>2013 - 2020</Event.Time>
+      <Event.Title>Computer Science @ Universidad de Morón</Event.Title>
+      <Event.Body>
+        <OpacityHidder>Computer science student</OpacityHidder>
+      </Event.Body>
+    </Event>
   </Timeline>
 );

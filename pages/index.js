@@ -5,8 +5,6 @@ import Image from 'next/image';
 
 import { Posts } from '../components/blog/Posts';
 import { ExperienceTimeline } from '../components/bio/ExperienceTimeline';
-import { StudiesTimeline } from '../components/bio/StudiesTimeline';
-import { CoursesTimeline } from '../components/bio/CoursesTimeline';
 import Head from 'next/head';
 
 const DURATION = 300;
@@ -66,16 +64,8 @@ export default function Home({ posts }) {
             style={getAnimationStyles(DURATION, DELAY * 2)}
           >
             <div className="max-w-lg col-span-4 md:col-span-8 lg:col-span-6">
-              <h2 className="block my-4">Work experience</h2>
+              <h2 className="block my-4">Tech timeline</h2>
               <ExperienceTimeline />
-            </div>
-
-            <div className="max-w-lg col-span-4 md:col-span-8 lg:col-span-6">
-              <h2 className="block my-4">Studies</h2>
-              <StudiesTimeline />
-              <br />
-              <h2 className="block my-4">Courses</h2>
-              <CoursesTimeline />
             </div>
           </div>
         </div>
