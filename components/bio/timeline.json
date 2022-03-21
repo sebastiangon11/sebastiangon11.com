@@ -1,0 +1,82 @@
+[
+  {
+    "id": "PEYA",
+    "title": "Principal Frontend Engineer @ Pedidos Ya",
+    "period": "August 2020 - Present",
+    "badges": ["Node JS", "Javascript", "React"],
+    "image": {
+      "src": "/bio/peya.png",
+      "description": "Pedidos Ya logo"
+    },
+    "projects": [
+      {
+        "title": "Home Page",
+        "description": "Involved in the new web home page which works with backend driven UI. I worked on building the web library which turns a JSON into the UI and the micro frontend responsible of displaying it."
+      },
+      {
+        "title": "Subcription program",
+        "description": "Worked on the micro frontend of the subscription program which is available in the web and also in the apps as a webview. Being pioneers in this aspect and ensuring the quality of the product."
+      },
+      {
+        "title": "Web Team",
+        "description": "I contribute to cross company web projects that help improve the development experience and the quality of the product we build in line with the company&apos;s OKRs and KPIs"
+      }
+    ]
+  },
+  {
+    "id": "MELI",
+    "title": "Senior Frontend Engineer @ Mercado Libre",
+    "period": "March 2017 - August 2020",
+    "badges": ["Node JS", "Javascript", "React", "Web sockets"],
+    "image": {
+      "src": "/bio/meli.png",
+      "description": "Mercado Libre logo"
+    },
+    "projects": [
+      {
+        "title": "Real time chat",
+        "description": "End to end chat solution to communicate users and support agents with crm integration. I was in charge of building a solution proposal, its architecture, design and implementation. The solution consisted in two micro frontends and a micro service which used web sockets for the real time messaging."
+      },
+      {
+        "title": "Voip calls",
+        "description": "IP calls console micro frontend for support agents and user facing real time call information frontend."
+      },
+      {
+        "title": "CRM Migration",
+        "description": "Migration of the CRM frontend to company&apos;s new web architecture."
+      }
+    ]
+  },
+  {
+    "id": "TELE",
+    "title": ".NET Developer @ Telectrónica",
+    "period": "October 2015 - March 2017",
+    "badges": ["C#", "MS SQL"],
+    "image": {
+      "src": "/bio/telectronica.jpeg",
+      "description": "Telectrónica logo"
+    },
+    "projects": [
+      {
+        "title": "Toll systems",
+        "description": "Development and maintenance of .NET web applications, SQL Server database administration, remote and field implementation."
+      }
+    ]
+  },
+  {
+    "id": "UM",
+    "title": "Computer Science @ Universidad de Morón",
+    "period": "2013 - 2020",
+    "badges": [],
+    "image": {
+      "src": "/bio/um.jpeg",
+      "description": "Universidad de Morón logo"
+    },
+    "projects": [
+      {
+        "title": "Toll systems",
+        "description": "Computer science student"
+      }
+    ]
+  }
+]
