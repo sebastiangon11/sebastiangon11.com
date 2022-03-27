@@ -8,6 +8,7 @@
       "src": "/bio/peya.png",
       "description": "Pedidos Ya logo"
     },
+    "background": "/bio/peya-background.jpeg",
     "projects": [
       {
         "title": "Home Page",
@@ -19,7 +20,7 @@
       },
       {
         "title": "Web Team",
-        "description": "I contribute to cross company web projects that help improve the development experience and the quality of the product we build in line with the company&apos;s OKRs and KPIs"
+        "description": "I contribute to cross company web projects that help improve the development experience and the quality of the product we build in line with the company's OKRs and KPIs"
       }
     ]
   },
@@ -32,6 +33,7 @@
       "src": "/bio/meli.png",
       "description": "Mercado Libre logo"
     },
+    "background": "/bio/meli-background.jpeg",
     "projects": [
       {
         "title": "Real time chat",
@@ -43,7 +45,7 @@
       },
       {
         "title": "CRM Migration",
-        "description": "Migration of the CRM frontend to company&apos;s new web architecture."
+        "description": "Migration of the CRM frontend to company's new web architecture."
       }
     ]
   },
@@ -56,6 +58,7 @@
       "src": "/bio/telectronica.jpeg",
       "description": "Telectrónica logo"
     },
+    "background": "/bio/telectronica-background.jpeg",
     "projects": [
       {
         "title": "Toll systems",
@@ -72,9 +75,10 @@
       "src": "/bio/um.jpeg",
       "description": "Universidad de Morón logo"
     },
+    "background": "/bio/um-background.jpeg",
     "projects": [
       {
-        "title": "Toll systems",
+        "title": "",
         "description": "Computer science student"
       }
     ]

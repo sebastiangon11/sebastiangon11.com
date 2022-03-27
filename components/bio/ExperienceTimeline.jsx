@@ -5,8 +5,8 @@ import timeline from './timeline.json';
 
 export const ExperienceTimeline = () => (
   <Timeline>
-    {timeline.map((evt) => (
-      <Event key={evt.id}>
+    {timeline.map((evt, i) => (
+      <Event id={evt.id} key={evt.id} side={i % 2 === 1 ? 'right' : 'left'} background={evt.background}>
         {evt.image && <Event.Image src={evt.image.src} alt={evt.image.alt} />}
         <Event.Time>{evt.period}</Event.Time>
         <Event.Title>
@@ -26,8 +26,8 @@ export const ExperienceTimeline = () => (
             {evt.projects &&
               evt.projects.length > 0 &&
               evt.projects.map((project) => (
-                <div key={project.title} className="text-gray-500 dark:text-gray-300">
-                  <p className="font-extralight">
+                <div key={project.title}>
+                  <p>
                     <span className="font-semibold">- {project.title}</span> {project.description}
                   </p>
                   <br />

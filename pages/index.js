@@ -55,15 +55,15 @@ export default function Home({ posts }) {
             className="block mt-2 mb-6 font-normal leading-9 opacity-0 fadeInUp"
             style={getAnimationStyles(DURATION, DELAY)}
           >
-            I am a <span className="font-semibold">very</span> curious person who likes to understand how things work
+            I am a <span className="font-semibold">very</span> curious person who likes to understand how things work,
             loves web development and is always learning new things to apply on personal projects 🚀
           </p>
 
           <div
-            className="relative mx-auto max-w-7xl grid grid-cols-4 gap-x-4 md:grid-cols-8 lg:grid-cols-12 lg:gap-x-6 gap-y-16 opacity-0 fadeInUp"
+            className="relative mx-auto max-w-7xl opacity-0 fadeInUp"
             style={getAnimationStyles(DURATION, DELAY * 2)}
           >
-            <div className="max-w-lg col-span-4 md:col-span-8 lg:col-span-6">
+            <div>
               <h2 className="block my-4">Tech timeline</h2>
               <ExperienceTimeline />
             </div>
