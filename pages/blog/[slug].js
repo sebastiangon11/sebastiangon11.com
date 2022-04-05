@@ -5,16 +5,12 @@ import GitHubButton from 'react-github-btn';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { nightOwl as dark } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
-// import { stackoverflowLight as light } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 import { ButtonCounter } from '../../components/ButtonCounter';
-import { useColorTheme } from '../../contexts/colorTheme.js';
 import Head from 'next/head';
 
 export default function PostPage({ frontMatter: { title, date, thumbnailUrl, description }, slug, mdxSource }) {
-  const { theme, COLOR_THEMES } = useColorTheme();
-
   return (
     <>
       <Head>
@@ -32,7 +28,7 @@ export default function PostPage({ frontMatter: { title, date, thumbnailUrl, des
       <div className="container max-w-4xl md:mx-auto text-center">
         <h1 className="mb-4">{title}</h1>
         <h4>{date}</h4>
-        <div className="container mt-8 max-w-2xl md:mx-auto text-left prose dark:prose-invert">
+        <div className="container mt-8 max-w-2xl md:mx-auto text-left prose prose-invert">
           <MDXRemote
             {...mdxSource}
             components={{
@@ -42,7 +38,7 @@ export default function PostPage({ frontMatter: { title, date, thumbnailUrl, des
                   <SyntaxHighlighter
                     {...props}
                     customStyle={{ borderRadius: 8, fontSize: '.9rem', padding: '24px 24px 24px 16px' }}
-                    style={theme === COLOR_THEMES.DARK ? dark : dark}
+                    style={nightOwl}
                   />
                 </div>
               ),

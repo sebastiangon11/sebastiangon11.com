@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { ColorThemeProvider } from '../contexts/colorTheme';
 
 import '../styles/globals.css';
 import '../styles/fades.css';
@@ -17,11 +16,9 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:site" content="@sebastiangon11" />
       </Head>
 
-      <main>
-        <ColorThemeProvider>
-          <Navbar />
-          <Component {...pageProps} />
-        </ColorThemeProvider>
+      <main className="container max-w-7xl md:mx-auto">
+        <Navbar />
+        <Component {...pageProps} />
       </main>
     </>
   );

@@ -26,7 +26,7 @@ export const ExperienceTimeline = () => (
             {evt.projects &&
               evt.projects.length > 0 &&
               evt.projects.map((project) => (
-                <div key={project.title} className="text-gray-500 dark:text-gray-300">
+                <div key={project.title} className="text-gray-300">
                   <p className="font-extralight">
                     <span className="font-semibold">- {project.title}</span> {project.description}
                   </p>

@@ -10,7 +10,7 @@ export const OpacityHidder = ({ children }) => {
   if (open) {
     className += 'max-h-screen';
   } else {
-    className += 'bg-light-down dark:bg-dark-down bg-clip-text max-h-14';
+    className += 'bg-dark-down bg-clip-text max-h-14';
   }
 
   return (
