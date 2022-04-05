@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 const EventBody = ({ children }) => {
-  return <div className="">{children}</div>;
+  return children;
 };
 
 const EventImage = ({ src, alt }) => {
@@ -28,9 +28,7 @@ const Event = ({ children, side }) => {
   const body = React.Children.toArray(children).find((child) => child.type === EventBody);
 
   const cardJSX = (
-    <div className={`relative min-h-max max-w-80 shadow-md rounded-xl my-4 overflow-hidden ${sideCardClass}`}>
-      {body}
-    </div>
+    <div className={`relative min-h-max w-full shadow-md rounded-xl my-4 overflow-hidden ${sideCardClass}`}>{body}</div>
   );
 
   return (
