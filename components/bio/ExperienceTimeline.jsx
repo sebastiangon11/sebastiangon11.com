@@ -4,8 +4,6 @@ import timeline from './timeline.json';
 import { FoldableMediaCard } from '../FoldableMediaCard/FoldableMediaCard';
 
 export const ExperienceTimeline = () => {
-  const cardsClassNames = '';
-
   return (
     <Timeline>
       {timeline.map((evt, i) => (
