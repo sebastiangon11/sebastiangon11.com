@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { useReducer } from 'react';
 import { GithubBadge } from './bio/GithubBadge';
 import { LinkedinBadge } from './bio/LinkedinBadge';
-import { ColorThemeButton } from './theming/ThemeButton';
 import { SearchBar } from './SearchBar';
 import MenuIcon from '../icons/menu.svg';
 import CrossIcon from '../icons/cross.svg';
@@ -17,9 +16,8 @@ export const Navbar = ({ showSearchbar = false }) => {
   const router = useRouter();
   const [showMenu, toggleMenu] = useReducer((show) => !show, false);
   return (
-    <nav className="bg-transparent border-gray-200 py-2.5 rounded ">
+    <nav className="bg-transparent border-gray-200 py-2.5 rounded">
       <div className="flex flex-wrap justify-between items-center">
-        <ColorThemeButton />
         <div className="justify-between items-center w-auto md:flex md:order-2 mx-2.5">
           <ul className="flex gap-x-4">
             <li>
@@ -41,7 +39,7 @@ export const Navbar = ({ showSearchbar = false }) => {
         <div className="flex md:order-2 md:hidden">
           <button
             onClick={toggleMenu}
-            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex items-center p-2 ml-3 text-sm  rounded-lg  focus:outline-none focus:ring-2 text-gray-400 hover:bg-gray-700 focus:ring-gray-600"
           >
             <span className="sr-only">Toggle menu</span>
             {showMenu ? <CrossIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
@@ -58,7 +56,7 @@ export const Navbar = ({ showSearchbar = false }) => {
                   <a
                     className={`${
                       router.pathname === link.path ? 'font-semibold' : null
-                    } block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700`}
+                    } block py-2 pr-4 pl-3 border-b  md:border-0  md:p-0 md:hover:text-white text-gray-200 hover:bg-gray-700 hover:text-white md:hover:bg-transparent border-gray-700`}
                   >
                     {link.title}
                   </a>

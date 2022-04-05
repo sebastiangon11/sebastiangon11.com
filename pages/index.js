@@ -32,7 +32,7 @@ export default function Home({ posts }) {
         <meta name="twitter:image" content="https://www.sebastiangon11.com/bio/avatar.gif" />
       </Head>
       <section className="md:mt-8">
-        <div className="container max-w-7xl md:mx-auto">
+        <div>
           <div className="flex gap-x-4 items-center opacity-0 fadeInUp" style={getAnimationStyles(DURATION, 0)}>
             <span className="block min-w-[50px]">
               <Image

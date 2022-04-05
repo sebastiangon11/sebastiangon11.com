@@ -11,7 +11,7 @@ export const ExperienceTimeline = () => {
           <Event.Image src={evt.image.src} alt={evt.image.alt} />
           <Event.Body>
             <FoldableMediaCard
-              className="text-gray-600 dark:text-white p-2  bg-gradient-to-b from-white/20 to-white/20 dark:from-white/5 dark:to-black/5"
+              className="text-white p-2 bg-gradient-to-b from-white/5 to-black/5"
               imageSrc={evt.background}
             >
               <FoldableMediaCard.FixedContent className="pt-2 font-bold">
