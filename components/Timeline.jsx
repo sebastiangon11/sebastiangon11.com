@@ -1,16 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 
-const EventTime = ({ children }) => (
-  <time className="mb-1 text-sm font-normal leading-none text-gray-700 ">{children}</time>
-);
-
-const EventTitle = ({ children }) => {
-  return <h3 className="text-lg font-semibold text-gray-600 ">{children}</h3>;
-};
-
 const EventBody = ({ children }) => {
-  return <div className="text-base font-normal text-gray-700">{children}</div>;
+  return <div className="">{children}</div>;
 };
 
 const EventImage = ({ src, alt }) => {
@@ -26,28 +18,18 @@ const EventImage = ({ src, alt }) => {
   );
 };
 
-const Event = ({ children, side, background }) => {
+const Event = ({ children, side }) => {
   const right = side === 'right';
 
   const sideContainerClass = right ? 'flex-row' : 'flex-row-reverse';
   const sideCardClass = right ? 'col-start-6 col-end-10 mr-auto' : 'col-start-1 col-end-5 ml-auto';
 
   const image = React.Children.toArray(children).find((child) => child.type === EventImage);
-  const time = React.Children.toArray(children).find((child) => child.type === EventTime);
-  const title = React.Children.toArray(children).find((child) => child.type === EventTitle);
   const body = React.Children.toArray(children).find((child) => child.type === EventBody);
 
   const cardJSX = (
     <div className={`relative min-h-max max-w-80 shadow-md rounded-xl my-4 overflow-hidden ${sideCardClass}`}>
-      <div
-        style={{ backgroundImage: `url('${background}')` }}
-        className={`absolute bg-red-50 inset-0 w-full h-full bg-cover grayscale-[70%] blur-[3px]`}
-      ></div>
-      <div className="relative p-4 bg-[rgba(255,255,255,0.5)]">
-        {time}
-        {title}
-        {body}
-      </div>
+      {body}
     </div>
   );
 
@@ -61,9 +43,7 @@ const Event = ({ children, side, background }) => {
   );
 };
 
-Event.Time = EventTime;
 Event.Image = EventImage;
-Event.Title = EventTitle;
 Event.Body = EventBody;
 
 const Timeline = ({ children }) => (

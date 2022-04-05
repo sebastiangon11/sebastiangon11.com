@@ -8,7 +8,7 @@
       "src": "/bio/peya.png",
       "description": "Pedidos Ya logo"
     },
-    "background": "/bio/peya-background.jpeg",
+    "background": "/bio/peya-background.png",
     "projects": [
       {
         "title": "Home Page",
@@ -33,7 +33,7 @@
       "src": "/bio/meli.png",
       "description": "Mercado Libre logo"
     },
-    "background": "/bio/meli-background.jpeg",
+    "background": "/bio/meli-background.png",
     "projects": [
       {
         "title": "Real time chat",
@@ -58,7 +58,7 @@
       "src": "/bio/telectronica.jpeg",
       "description": "Telectrónica logo"
     },
-    "background": "/bio/telectronica-background.jpeg",
+    "background": "/bio/telectronica-background.png",
     "projects": [
       {
         "title": "Toll systems",
@@ -75,11 +75,10 @@
       "src": "/bio/um.jpeg",
       "description": "Universidad de Morón logo"
     },
-    "background": "/bio/um-background.jpeg",
+    "background": "/bio/um-background.png",
     "projects": [
       {
-        "title": "",
-        "description": "Computer science student"
+        "title": "Computer science degree"
       }
     ]
   }
