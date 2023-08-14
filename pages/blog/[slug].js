@@ -46,6 +46,21 @@ export default function PostPage({ frontMatter: { title, date, thumbnailUrl, des
           />
         </div>
 
+        <aside
+          id="default-sidebar"
+          className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+          aria-label="Sidebar"
+        >
+          <ins
+            className="adsbygoogle"
+            style={{ display: 'block' }}
+            data-ad-client="ca-pub-6828291735302865"
+            data-ad-slot="7094973188"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+        </aside>
+
         <span className="block mt-6">
           <GitHubButton
             href="https://github.com/sebastiangon11/sebastiangon11.com"
